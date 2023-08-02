@@ -28,7 +28,7 @@ Specifying output is mandatory for pack action
 ### Linux
 Here, process of building cutpack is pretty straightforward!
 
-All you need is just GCC 13.1.1 and CMake 3.27 or higher ;3
+All you need is just GCC 13.1.1 and CMake 3.25 or higher ;3
 
 ```
 git clone https://github.com/hardronix122/cutpack.git
