@@ -41,6 +41,7 @@ make
 
 ### Windows:
 On Windows, it's a bit annoying but still bearable UwU
+
 The resulting exe will be a bit large, but it won't require any libraries ;3
 
 1. Download Cygwin
