@@ -1,0 +1,7 @@
+# CLion project files
+.idea
+cmake-build-*
+
+# Cutscene files
+*.cut
+*.cut.xbx
