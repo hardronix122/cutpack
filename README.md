@@ -6,6 +6,7 @@ A tool for repacking Tony Hawk's Underground 1/2 .cut/.cut.xbx cutscenes!
 
 `-x` - eXtract cutscene
 `-p` - Pack cutscene
+`-t` - checksum Table path
 `-i` - Input path
 `-o` - Output path
 `-v` - Verbose

@@ -5,6 +5,7 @@
 #include <vector>
 #include <iterator>
 #include <algorithm>
+#include <map>
 
 #include "CutpackOperation.h"
 #include "CutsceneFile.h"
@@ -12,7 +13,7 @@
 
 void printHelp(char *name);
 
-void extractCutscene(const std::string &input, const std::string &output, bool verbose);
+void extractCutscene(const std::string &input, const std::string &output, const std::string &checksumTable, bool verbose);
 
 void packCutscene(const std::string &input, const std::basic_string<char> &output, bool verbose);
 
@@ -22,6 +23,7 @@ int main(int argc, char *argv[]) {
 
     std::string input;
     std::string output;
+    std::string checksumTable;
 
     int c;
 
@@ -30,7 +32,7 @@ int main(int argc, char *argv[]) {
         return 0;
     }
 
-    while ((c = getopt(argc, argv, "hxpvi:o:")) != -1) {
+    while ((c = getopt(argc, argv, "hxpvt:i:o:")) != -1) {
         switch (c) {
             case 'h':
                 printHelp(argv[0]);
@@ -43,6 +45,9 @@ int main(int argc, char *argv[]) {
                 break;
             case 'v':
                 verbose = true;
+                break;
+            case 't':
+                checksumTable = std::string(optarg);
                 break;
             case 'i':
                 input = std::string(optarg);
@@ -79,7 +84,7 @@ int main(int argc, char *argv[]) {
             }
         }
 
-        extractCutscene(input, output, verbose);
+        extractCutscene(input, output, checksumTable, verbose);
     }
 
     if (operation == PACK) {
@@ -89,7 +94,9 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
-void extractCutscene(const std::string &input, const std::string &output, bool verbose) {
+void extractCutscene(const std::string &input, const std::string &output, const std::string &checksumTable, bool verbose) {
+    std::map<uint32_t, std::string> checksums;
+
     if (!std::filesystem::is_regular_file(input)) {
         printf("Input is not a file!\n");
         return;
@@ -98,6 +105,33 @@ void extractCutscene(const std::string &input, const std::string &output, bool v
     if (std::filesystem::exists(output)) {
         printf("Output directory exists!\n");
         return;
+    }
+
+    if(std::filesystem::exists(checksumTable)) {
+        std::ifstream checksumTableFile(checksumTable);
+
+        std::string line;
+
+        while(std::getline(checksumTableFile, line)) {
+            if(line.empty() || line.rfind("//", 0) == 0) {
+                continue;
+            }
+
+            size_t pos = line.find(';');
+
+            if(pos != std::string::npos) {
+                std::string name = line.substr(0, pos);
+                std::string checksum = line.substr(pos + 1);
+
+                try {
+                    checksums.insert({std::stoul(checksum, nullptr, 16), name});
+                } catch (std::exception& e) {
+                    printf("Failed to read checksums table!");
+                    checksums.clear();
+                    break;
+                }
+            }
+        }
     }
 
     std::filesystem::create_directory(output);
@@ -162,9 +196,19 @@ void extractCutscene(const std::string &input, const std::string &output, bool v
         std::filesystem::path finalPath = output;
         std::stringstream finalFilename;
 
-        finalFilename << "0x" << std::setw(8) << std::setfill('0') << std::hex << file.name << ".0x" << std::setw(8)
-                      << std::setfill('0') << std::hex << file.extension;
+        if(checksums.count(file.name)) {
+            finalFilename << checksums[file.name];
+        } else {
+            finalFilename << "0x" << std::setw(8) << std::setfill('0') << std::hex << file.name;
+        }
 
+        finalFilename << ".";
+
+        if(checksums.count(file.extension)) {
+            finalFilename << checksums[file.extension];
+        } else {
+            finalFilename << "0x" << std::setw(8) << std::setfill('0') << std::hex << file.extension;
+        }
         finalPath /= finalFilename.str();
 
         std::ofstream outputFile(finalPath, std::ios::binary);
@@ -331,6 +375,7 @@ void printHelp(char *name) {
     printf("Extracts into a directory with the same name if -o is not specified\n\n");
     printf("  -x        Extract cutscene\n");
     printf("  -p        Pack cutscene\n");
+    printf("  -t        Checksum table path\n");
     printf("  -i        Input path\n");
     printf("  -o        Output path\n");
     printf("  -v        Verbose\n\n");
