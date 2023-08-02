@@ -1,0 +1,19 @@
+// Extensions
+qb;2bbea5c3
+ska;eab51346
+cam;05ca1497
+fam;0301d67c
+tex;1512808d
+scn;b2d384df
+col;ec4e098f
+cifstruct;508ae2f2
+bik;25b2519d
+snd;e7a8138c
+cif;5ac14717
+skin;fd8697e1
+wgt;2cd4107d
+cas;ffc529f4
+oba;2e4bf21b
+geom;e7308c1f
+ske;edd8d75f
+mdl;0524fd4e
