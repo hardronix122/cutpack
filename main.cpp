@@ -289,8 +289,6 @@ void packCutscene(const std::string &input, const std::string &output, bool verb
         uint32_t misalignment = data.size() % 4;
 
         if (misalignment != 0) {
-            printf("Aligning...\n");
-
             for (int i = 0; i < 4 - misalignment; i++) {
                 data.push_back(0x00);
                 offset++;
