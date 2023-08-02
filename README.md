@@ -47,8 +47,9 @@ The resulting exe will be a bit large, but it won't require any libraries ;3
 2. Clone/download this repository
 3. Run Cygwin setup
 4. During setup, find and install `mingw64-x86_64-gcc-core`, `mingw64-x86_64-gcc-g++`, `cmake` and `make`
-5. Switch to cutpack directory (`cd [path]`)
-6. Execute `mkdir build`
-7. Execute `cd build`
-8. Execute `cmake -DCMAKE_CXX_COMPILER="x86_64-w64-mingw32-g++" -DCMAKE_C_COMPILER="x86_64-w64-mingw32-gcc" -DCMAKE_EXE_LINKER_FLAGS="-static" ..`
-9. Execute `make`
+5. Open Cygwin
+6. Switch to cutpack directory (`cd [path]`)
+7. Execute `mkdir build`
+8. Execute `cd build`
+9. Execute `cmake -DCMAKE_CXX_COMPILER="x86_64-w64-mingw32-g++" -DCMAKE_C_COMPILER="x86_64-w64-mingw32-gcc" -DCMAKE_EXE_LINKER_FLAGS="-static" ..`
+10. Execute `make`
