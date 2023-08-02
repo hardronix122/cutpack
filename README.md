@@ -40,12 +40,15 @@ make
 ```
 
 ### Windows:
-1. Install msys2 (https://github.com/msys2/msys2-installer/releases/)
+On Windows, it's a bit annoying but still bearable UwU
+The resulting exe will be a bit large, but it won't require any libraries ;3
+
+1. Download Cygwin
 2. Clone/download this repository
-3. Run MSYS2 MINGW64
-4. Execute `pacman -S base-devel gcc cmake`
+3. Run Cygwin setup
+4. During setup, find and install `mingw64-x86_64-gcc-core`, `mingw64-x86_64-gcc-g++`, `cmake` and `make`
 5. Switch to cutpack directory (`cd [path]`)
 6. Execute `mkdir build`
 7. Execute `cd build`
-8. Execute `cmake -DCMAKE_CXX_COMPILER=g++ ..`
+8. Execute `cmake -DCMAKE_CXX_COMPILER="x86_64-w64-mingw32-g++" -DCMAKE_C_COMPILER="x86_64-w64-mingw32-gcc" -DCMAKE_EXE_LINKER_FLAGS="-static" ..`
 9. Execute `make`
