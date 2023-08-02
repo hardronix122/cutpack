@@ -4,12 +4,12 @@ A tool for repacking Tony Hawk's Underground 1/2 .cut/.cut.xbx cutscenes!
 # Usage
 ### Flags:
 
-`-x` - eXtract cutscene
-`-p` - Pack cutscene
-`-t` - checksum Table path
-`-i` - Input path
-`-o` - Output path
-`-v` - Verbose
++ `-x` - eXtract cutscene
++ `-p` - Pack cutscene
++ `-t` - checksum Table path
++ `-i` - Input path
++ `-o` - Output path
++ `-v` - Verbose
 
 ### Extraction:
 `cutpack -x -i somecutscene.cut.xbx -o outputdirectory`
