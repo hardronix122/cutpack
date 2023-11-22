@@ -191,7 +191,7 @@ void extractCutscene(const std::string &input, const std::string &output, const 
 
         cutscene.seekg(file.offset, std::ios::beg);
 
-        cutscene.read(fileData, file.size);
+        cutscene.read(fileData, (std::streamsize) file.size);
 
         std::filesystem::path finalPath = output;
         std::stringstream finalFilename;
@@ -213,7 +213,7 @@ void extractCutscene(const std::string &input, const std::string &output, const 
 
         std::ofstream outputFile(finalPath, std::ios::binary);
 
-        outputFile.write(fileData, file.size);
+        outputFile.write(fileData, (std::streamsize) file.size);
         outputFile.close();
 
         printf("%s -> %s\n", finalFilename.str().c_str(), finalPath.c_str());
@@ -314,7 +314,7 @@ void packCutscene(const std::string &input, const std::string &output, bool verb
 
         // Read data into the vector
         std::vector<char> tempData(cutsceneFile.size);
-        fileData.read(tempData.data(), cutsceneFile.size);
+        fileData.read(tempData.data(), (std::streamsize) cutsceneFile.size);
 
         // Close the file
         fileData.close();
@@ -365,7 +365,7 @@ void packCutscene(const std::string &input, const std::string &output, bool verb
     }
 
     // Write data to the cutscene
-    cutscene.write(data.data(), (uint32_t) data.size());
+    cutscene.write(data.data(), (std::streamsize) data.size());
 
     // Close the cutscene file
     cutscene.close();
