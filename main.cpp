@@ -72,8 +72,8 @@ int main(int argc, char *argv[]) {
     }
 
     printf("Action: %s\n", operation == EXTRACT ? "Extract" : "Pack");
-    printf("Input: %s\n", input.c_str());
-    printf("Output: %s\n\n", output.c_str());
+    printf("Input: %s\n", input.empty() ? "[Not Specified]" : input.c_str());
+    printf("Output: %s\n\n", output.empty() ? "[Not Specified]" : output.c_str());
 
     if (operation == EXTRACT) {
         if(output.empty()) {
@@ -231,7 +231,12 @@ void packCutscene(const std::string &input, const std::string &output, bool verb
     }
 
     if (std::filesystem::exists(output)) {
-        printf("Output path already exists!\n");
+        printf("Output file already exists!\n");
+        return;
+    }
+
+    if(output.empty()) {
+        printf("Please, specify an output file!\n");
         return;
     }
 
