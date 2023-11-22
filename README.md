@@ -1,6 +1,8 @@
 # Cutpack
 A tool for repacking Tony Hawk's Underground 1/2 .cut/.cut.xbx cutscenes!
 
+![Repacked New Orleans Event Cutscene](gif/flaming-felines.gif)
+
 # Usage
 ### Flags:
 
