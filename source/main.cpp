@@ -7,9 +7,9 @@
 #include <algorithm>
 #include <map>
 
-#include "CutpackOperation.h"
-#include "CutsceneFile.h"
-#include "QbCrc.h"
+#include "cutpack_operation.h"
+#include "cutscene_file.h"
+#include "qb_crc.h"
 
 void printHelp(char *name);
 

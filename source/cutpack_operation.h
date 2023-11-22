@@ -1,0 +1,10 @@
+#ifndef CUTPACK_CUTPACK_OPERATION_H
+#define CUTPACK_CUTPACK_OPERATION_H
+
+enum CutpackOperation {
+    EXTRACT,
+    PACK,
+    UNDEFINED
+};
+
+#endif //CUTPACK_CUTPACK_OPERATION_H

@@ -1,4 +1,4 @@
-#include "QbCrc.h"
+#include "qb_crc.h"
 
 static unsigned long POLYNOMIAL_TABLE[256] =
         {

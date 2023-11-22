@@ -1,5 +1,5 @@
-#ifndef CUTPACK_CUTSCENEFILE_H
-#define CUTPACK_CUTSCENEFILE_H
+#ifndef CUTPACK_CUTSCENE_FILE_H
+#define CUTPACK_CUTSCENE_FILE_H
 
 #include <cstdint>
 
@@ -10,4 +10,4 @@ struct CutsceneFile {
     uint32_t extension;
 };
 
-#endif //CUTPACK_CUTSCENEFILE_H
+#endif //CUTPACK_CUTSCENE_FILE_H
