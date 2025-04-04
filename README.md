@@ -31,7 +31,8 @@ Specifying output is mandatory for pack action
 Checksum tables are basically maps that turn hexadecimal unsigned 32-bit integer values of CRC32 hashes back into text.<br/>
 They are used to get the file formats and names back.
 
-The default one is available at [data/checksum_table.txt](data/checksum_table.txt)<br/>
+> [!NOTE]
+> The default one is available at [data/checksum_table.txt](data/checksum_table.txt)<br/>
 
 Yup, that's it... -w-
 
