@@ -14,17 +14,22 @@ A tool for repacking Tony Hawk's Underground 1/2 .cut/.cut.xbx cutscenes!
 + `-v` - Verbose
 
 ### Extraction:
-`cutpack -x -i somecutscene.cut.xbx -o outputdirectory`
+`cutpack -x -i somecutscene.cut.xbx -t data/checksum_table.txt -o outputdirectory`
 
 `-o` is optional, cutscene will be extracted into the directory with the same name if not specified
 
 Example: somecutscene.cut.xbx -> comecutscene.cut.xbx_data
+
 ### Pack:
 `cutpack -p -i outputdirectory -o somecutscene.cut.xbx`
 
 Specifying output is mandatory for pack action
 
 (I don't want to spawn lots of garbage which goes like scene.cut.xbx_data.cut.xbx lmao)
+
+# Checksum tables
+Checksum tables are basically maps that turn hexadecimal 32-bit unsigned integer values of crc32 hashes back into text.
+They are used to get the file formats and names back. Yup, that's it... -w-
 
 # Building
 

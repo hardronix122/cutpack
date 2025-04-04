@@ -3,6 +3,12 @@ project(cutpack VERSION 1.0.2)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(cutpack source/main.cpp source/cutpack_operation.h source/cutscene_file.h source/qb_crc.cpp source/qb_crc.h)
+set(SOURCES
+        src/main.cpp
+        src/util/qb_crc.cpp
+)
+
+add_executable(cutpack ${SOURCES})
 
 target_link_libraries(${PROJECT_NAME} PRIVATE -static-libgcc -static-libstdc++ -static)
+target_include_directories(${PROJECT_NAME} PRIVATE include)

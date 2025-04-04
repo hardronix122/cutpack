@@ -1,4 +1,4 @@
-#include "qb_crc.h"
+#include <cutpack/util/qb_crc.h>
 
 static unsigned long POLYNOMIAL_TABLE[256] =
         {
@@ -75,8 +75,8 @@ unsigned long QbCrc::generate(std::string text) {
     std::transform(text.begin(), text.end(), text.begin(), ::tolower);
 
     // Calculate the checksum
-    for(char c : text) {
-        checksum = POLYNOMIAL_TABLE[(unsigned char)(checksum ^ c)] ^ (checksum >> 8);
+    for (char c: text) {
+        checksum = POLYNOMIAL_TABLE[(unsigned char) (checksum ^ c)] ^ (checksum >> 8);
     }
 
     return checksum;

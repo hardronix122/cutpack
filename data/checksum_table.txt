@@ -1,4 +1,4 @@
-// Extensions
+// File extensions
 qb;2bbea5c3
 ska;eab51346
 cam;05ca1497
@@ -17,3 +17,6 @@ oba;2e4bf21b
 geom;e7308c1f
 ske;edd8d75f
 mdl;0524fd4e
+nqb;d76f8804
+sqb;c391b827
+nck;d6474073
