@@ -28,8 +28,12 @@ Specifying output is mandatory for pack action
 (I don't want to spawn lots of garbage which goes like scene.cut.xbx_data.cut.xbx lmao)
 
 # Checksum tables
-Checksum tables are basically maps that turn hexadecimal 32-bit unsigned integer values of crc32 hashes back into text.
-They are used to get the file formats and names back. Yup, that's it... -w-
+Checksum tables are basically maps that turn hexadecimal unsigned 32-bit integer values of CRC32 hashes back into text.<br/>
+They are used to get the file formats and names back.
+
+The default one is available at [data/checksum_table.txt](data/checksum_table.txt)<br/>
+
+Yup, that's it... -w-
 
 # Building
 
