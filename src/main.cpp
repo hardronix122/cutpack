@@ -216,7 +216,7 @@ void extractCutscene(const std::string &input, const std::string &output, const 
         outputFile.write(fileData, (std::streamsize) file.size);
         outputFile.close();
 
-        printf("%s -> %s\n", finalFilename.str().c_str(), finalPath.c_str());
+        printf("%s -> %s\n", finalFilename.str().c_str(), finalPath.string().c_str());
     }
 
     cutscene.close();
