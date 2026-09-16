@@ -257,16 +257,19 @@ void packCutscene(const std::string &input, const std::string &output, bool verb
         unsigned long firstChecksum;
         unsigned long secondChecksum;
 
+		std::string filename = first.filename().string();
+		std::string extension = second.filename().string();
+
         if (first.filename().string().rfind("0x", 0) == 0) {
-            firstChecksum = std::stoul(first.filename().string(), nullptr, 16);
+            firstChecksum = std::stoul(filename, nullptr, 16);
         } else {
-            firstChecksum = QbCrc::generate(first.filename().string());
+            firstChecksum = QbCrc::generate(filename);
         }
 
         if (second.filename().string().rfind("0x", 0) == 0) {
-            secondChecksum = std::stoul(second.filename().string(), nullptr, 16);
+            secondChecksum = std::stoul(extension, nullptr, 16);
         } else {
-            secondChecksum = QbCrc::generate(second.filename().string());
+            secondChecksum = QbCrc::generate(extension);
         }
 
         return firstChecksum < secondChecksum;
@@ -288,9 +291,9 @@ void packCutscene(const std::string &input, const std::string &output, bool verb
 
         // Convert name to integer from hex or calculate checksum
         if (file.filename().string().rfind("0x", 0) == 0) {
-            cutsceneFile.name = std::stoul(file.filename().string(), nullptr, 16);
+            cutsceneFile.name = std::stoul(file.filename().stem().string(), nullptr, 16);
         } else {
-            cutsceneFile.name = QbCrc::generate(file.filename().string());
+            cutsceneFile.name = QbCrc::generate(file.filename().stem().string());
         }
 
         std::string extension = file.extension().string();
